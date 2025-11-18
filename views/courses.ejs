@@ -1,0 +1,24 @@
+<h2 style="text-align:center;">Available Courses</h2>
+
+<% if (!courses || courses.length === 0) { %>
+  <p style="text-align:center;">No courses available.</p>
+<% } else { %>
+  <div style="display:grid; gap:12px;">
+    <% courses.forEach(course => { %>
+      <div style="border:1px solid #ddd; padding:12px; border-radius:6px;">
+        <h3 style="margin:0 0 6px 0;"><%= course.title %></h3>
+        <p class="small"><%= course.description %></p>
+        <% const cid = String(course._id); %>
+
+        <% if (registeredCourseIds && registeredCourseIds.includes(cid)) { %>
+          <button class="btn" disabled>Already Registered</button>
+        <% } else { %>
+          <form action="/courses/register" method="post" style="display:inline-block; margin-top:8px;">
+            <input type="hidden" name="courseId" value="<%= course._id %>">
+            <button class="btn btn-primary" type="submit">Register</button>
+          </form>
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
