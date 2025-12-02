@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  student-app:
+    build: .
+    container_name: student-course-app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: always
