@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  # 🟦 Scrape cAdvisor (Container metrics)
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  # 🟩 Scrape Node App (ONLY if /metrics exists)
+  - job_name: 'student-app'
+    static_configs:
+      - targets: ['app:3000']
