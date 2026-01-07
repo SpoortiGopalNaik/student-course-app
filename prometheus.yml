@@ -8,6 +8,6 @@ scrape_configs:
       - targets: ['cadvisor:8080']
 
   # 🟩 Scrape Node App (ONLY if /metrics exists)
-  - job_name: 'student-app'
+  - job_name: 'student-course-app'
     static_configs:
-      - targets: ['app:3000']
+      - targets: ['student-course-app:3000']
